@@ -46,7 +46,7 @@ const validateCred = (array) => {
 const findInvalidCards = (nestedArray) => {
     const invalidCards = []
     for(const array of nestedArray){
-        const isValid = alidateCred(array);
+        const isValid = validateCred(array);
 
         if(!isValid){
             invalidCards.push(array);
@@ -54,4 +54,33 @@ const findInvalidCards = (nestedArray) => {
     }
 
     return invalidCards;
+}
+
+
+
+const idInvalidCardCompanies = (nestedArray) => {
+    let invalidCardsCompanies = []
+    for(let array of nestedArray){
+        switch (array[0]){
+            case 3 :
+                invalidCardsCompanies.push('Amex (American Express)');
+            break;
+            case 4 :
+                invalidCardsCompanies.push('Visa');
+            break;
+            case 5 :
+                invalidCardsCompanies.push('Mastercard');
+            break;
+            case 6 :
+                invalidCardsCompanies.push('Discover');
+            break;
+            default:
+                console.log(`${array[0]} - Company not found`);
+            break;
+        }
+       
+    }
+    invalidCardsCompanies =  [...new Set(invalidCardsCompanies)];
+
+    return invalidCardsCompanies;
 }
