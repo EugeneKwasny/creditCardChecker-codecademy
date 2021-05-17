@@ -41,3 +41,17 @@ const validateCred = (array) => {
 
     return arraySum%10 === 0;
 }
+
+
+const findInvalidCards = (nestedArray) => {
+    const invalidCards = []
+    for(const array of nestedArray){
+        const isValid = alidateCred(array);
+
+        if(!isValid){
+            invalidCards.push(array);
+        }
+    }
+
+    return invalidCards;
+}
